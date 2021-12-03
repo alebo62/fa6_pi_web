@@ -1,0 +1,79 @@
+﻿
+apt-get install iproute
+
+ip link list
+ip rule list
+
+echo 100 net_r1 >> /etc/iproute2/rt_tables
+ip rule add from 192.168.10.2 table net_r1
+
+echo 200 net_r2 >> /etc/iproute2/rt_tables
+ip rule add from 192.168.20.2 table net_r2
+
+ip route add default via 192.168.10.1 dev usb0 table net_r1
+ip route add default via 192.168.20.1 dev usb1 table net_r2
+
+route add -net 12.0.0.0/8 gw 192.168.10.1 usb0
+route add -net 12.0.0.0/8 gw 192.168.20.1 usb1
+
+
+
+*******for H5*******
+eflasher
+update, upgrade
+mc
+iproute
+
+
+etc/dhcpcd.conf
+interface usb0
+metric 205
+interface usb1
+metric 205
+
+etc/iproute2/rt_tables
+100 net_r1
+200 net_r2
+*******************
+
+
+28.06 add sigidTimer  during change channels
+      add rx_callTimer  during start of rx
+*********************************
+NANO_PI !!!!!!!!!!!
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install mc
+sudo apt-get install iproute
+
+sudo nano /etc/network/interfaces
+#iface eth0 inet static 
+#address 192.168.0.1 
+#netmask 255.255.255.0 
+#gateway 192.168.0.254
+#dns-nameservers 192.168.0.254 8.8.8.8
+#auto eth0
+
+sudo nano /etc/iproute2/rt_tables
+100 net_r1
+200 net_r2
+
+sudo nano /etc/rc.local
+#sudo /home/pi/fa6_pi
+
+ - через WinSCP заливаем etc , QWeb, Server
+
+-компилируем С log, pass и заливаем
+-компилируем БЕЗ log pass и заливаем
+-редактируем rc.local(убираем #) и перезагружаем
+-входим через Броузер :8080 и редактируем порт и адрес
+-проверяем подключение
+
+****************G I T******************
+gitCracken  l:alex@cscnw.ru  p:3551639k
+
+localGit  l:alebo62  p:TDx8CT
+***********************************
+1308 то что сохранилось на дом. компе.
+2109 добавлен в АНАЛОГОВОМ канале корректный CALLENDED , если нет звуковых пакетов.
